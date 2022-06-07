@@ -53,7 +53,7 @@ print:
 	@echo CUDA_INCLUDE=$(CUDA_INCLUDE)
 
 # Files
-EXEC := ex2.out
+EXEC := main.out
 SRC := $(wildcard *.c)
 OBJ := $(patsubst %.c,%.o,$(SRC))
 
