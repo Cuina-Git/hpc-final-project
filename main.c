@@ -37,7 +37,7 @@ int main(int argc,char **args)
    ierr = VecSet(u,zero);CHKERRQ(ierr);
    ierr = VecSet(f,zero);CHKERRQ(ierr);
    if (rank == 0){
-      for (i = 0; i < m; i++) {
+      for (i = 0; i <= m; i++) {
          if (i == 0 || i == m) {
 	         ierr = VecSetValues(u,1,&i,&zero,INSERT_VALUES);CHKERRQ(ierr);
          } 
@@ -46,9 +46,7 @@ int main(int argc,char **args)
             ierr = VecSetValues(u,1,&i,&ui,INSERT_VALUES);CHKERRQ(ierr);
          }
          fi   = sin(l*PETSC_PI*i*delta_x);
-         ierr = VecSetValues(f,1,&i,&fi,INSERT_VALUES);CHKERRQ(ierr);
       }
-      ierr = VecScale(f,(PetscScalar)delta_t);CHKERRQ(ierr);
    }
 
    /* Assemble vector */
@@ -57,6 +55,7 @@ int main(int argc,char **args)
    ierr = VecAssemblyBegin(f);CHKERRQ(ierr);
    ierr = VecAssemblyEnd(f);CHKERRQ(ierr);
   
+   ierr = VecSetValues(f,1,&i,&fi,INSERT_VALUES);CHKERRQ(ierr);
    ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
    /* create matrix object */
@@ -94,11 +93,14 @@ int main(int argc,char **args)
 
    /* Slove the heat equation */
     while (its < n){
+    ierr = VecScale(f,(PetscScalar)delta_t);CHKERRQ(ierr);
     ierr = MatMultAdd(A,u,f,u_new);CHKERRQ(ierr);
     i = 0;
     ierr = VecSetValues(u_new,1,&i,&zero,INSERT_VALUES);CHKERRQ(ierr);
     i = m-1;
     ierr = VecSetValues(u_new,1,&i,&zero,INSERT_VALUES);CHKERRQ(ierr);
+    ierr = VecAssemblyBegin(u);CHKERRQ(ierr);
+    ierr = VecAssemblyEnd(u);CHKERRQ(ierr);
     ierr = VecCopy(u_new,u);CHKERRQ(ierr);
     ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
     its++;
