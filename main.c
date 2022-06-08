@@ -21,12 +21,12 @@ int main(int argc,char **args)
 
    /* Initialize */
    ierr = PetscInitialize(&argc,&args,(char*)0,help);if (ierr) return ierr;
-   ierr = PetscOptionsGetInt(NULL,NULL,"-m",&m,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetInt(NULL,NULL,"-n",&n,NULL);CHKERRQ(ierr);
+   /*ierr = PetscOptionsGetInt(NULL,NULL,"-m",&m,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetScalar(NULL,NULL,"-rho",&rho,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetScalar(NULL,NULL,"-c",&c,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetScalar(NULL,NULL,"-l",&l,NULL);CHKERRQ(ierr);
-   ierr = PetscPrintf(PETSC_COMM_WORLD,"delta_t %f \n",delta_t);CHKERRQ(ierr);
+   ierr = PetscPrintf(PETSC_COMM_WORLD,"delta_t %f \n",delta_t);CHKERRQ(ierr);*/
 
    /* Assert parameters are positive */
    assert(c>0.0);
