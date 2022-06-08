@@ -136,9 +136,10 @@ int main(int argc,char **args)
       /* Write HDF5 every 10 iterations for checkpoints restart */
       if (its % 20 == 0)
       {
+         i = 2; value[0] = 20.0*delta_t;
          ierr = VecView(u,viewer);CHKERRQ(ierr);
          ierr = PetscViewerHDF5PushGroup(viewer, "/heat");CHKERRQ(ierr);
-         ierr = VecSetValues(heat,1,2,20.0*delta_t,ADD_VALUES);CHKERRQ(ierr);
+         ierr = VecSetValues(heat,1,&i,value[0],ADD_VALUES);CHKERRQ(ierr);
 
          ierr = VecAssemblyBegin(heat);CHKERRQ(ierr);
          ierr = VecAssemblyEnd(heat);CHKERRQ(ierr);
