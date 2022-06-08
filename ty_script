@@ -3,8 +3,8 @@
 #BSUB -q ser
 #BSUB -n 10
 #BSUB -m 'r01n23'
-#BSUB -e petsc.err
-#BSUB -o petsc.out
+#BSUB -e log.out
+#BSUB -o log.out
 
 module purge
 module load intel/2018.4
@@ -15,5 +15,4 @@ mpirun -np 10 ./main.out -n 100000 \
   -pc_type asm \
   -ksp_monitor_short \
   -ksp_converged_reason \
-  -ksp_view \
   -log_view > result.log 2>&1
