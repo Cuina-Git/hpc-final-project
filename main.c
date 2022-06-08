@@ -1,4 +1,4 @@
-static char help[] = "Solves r the transient heat equation in a one-dimensional \n\n";
+static char help[] = "Solves r the transient init equation in a one-dimensional \n\n";
 
 /*
   Include "petscksp.h" so that we can use KSP solvers. 
@@ -11,7 +11,7 @@ static char help[] = "Solves r the transient heat equation in a one-dimensional 
 int main(int argc,char **args)
 {
 
-   Vec            u, u_new, f, heat;      /* approx solution, RHS, exact solution */
+   Vec            u, u_new, f, init;      /* approx solution, RHS, exact solution */
    Mat            A;                      /* linear system matrix */
    PC             pc;                     /* preconditioner context */
    PetscErrorCode ierr;
@@ -76,6 +76,14 @@ int main(int argc,char **args)
    ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
    ierr = VecView(f,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
+   /* Set some init value to storge */
+   col[0] = 0; col[1] = 1; col[2] = 2;
+   value[0] = delta_x; value[1] = delta_t; value[2] = 0.0;	//dx,dt,t=0
+   ierr = VecSetValues(init,3,col,value,INSERT_VALUES);CHKERRQ(ierr);
+
+   ierr = VecAssemblyBegin(init);CHKERRQ(ierr);
+   ierr = VecAssemblyEnd(init);CHKERRQ(ierr);
+
    /* create matrix object */
    ierr = MatCreate(PETSC_COMM_WORLD,&A);CHKERRQ(ierr);
    ierr = MatSetSizes(A,nlocal,nlocal,m,m);CHKERRQ(ierr);
@@ -112,16 +120,15 @@ int main(int argc,char **args)
    /* Create HDF for checkpoints restart */
    if(!restart) {
       ierr = PetscViewerHDF5Open(PETSC_COMM_WORLD,FILE,FILE_MODE_WRITE,&viewer);CHKERRQ(ierr);
-   } else if (restart) 
-   {
+   } else {
       ierr = PetscViewerHDF5Open(PETSC_COMM_WORLD,FILE,FILE_MODE_UPDATE,&viewer);CHKERRQ(ierr);
       ierr = VecLoad(u,viewer);CHKERRQ(ierr);
-      ierr = PetscViewerHDF5PushGroup(viewer, "/heat");CHKERRQ(ierr);
-      ierr = VecLoad(heat,viewer);CHKERRQ(ierr);
+      ierr = PetscViewerHDF5PushGroup(viewer, "/init");CHKERRQ(ierr);
+      ierr = VecLoad(init,viewer);CHKERRQ(ierr);
       ierr = PetscViewerHDF5PopGroup(viewer);CHKERRQ(ierr);
    }
 
-   /* Slove the heat equation */
+   /* Slove the init equation */
     while (its < n){
       ierr = MatMultAdd(A,u,f,u_new);CHKERRQ(ierr);
       i = 0;
@@ -138,12 +145,12 @@ int main(int argc,char **args)
       {
          i = 2; value[0] = 20.0*delta_t;
          ierr = VecView(u,viewer);CHKERRQ(ierr);
-         ierr = PetscViewerHDF5PushGroup(viewer, "/heat");CHKERRQ(ierr);
-         ierr = VecSetValues(heat,1,&i,value,ADD_VALUES);CHKERRQ(ierr);
+         ierr = PetscViewerHDF5PushGroup(viewer, "/init");CHKERRQ(ierr);
+         ierr = VecSetValues(init,1,&i,value,ADD_VALUES);CHKERRQ(ierr);
 
-         ierr = VecAssemblyBegin(heat);CHKERRQ(ierr);
-         ierr = VecAssemblyEnd(heat);CHKERRQ(ierr);
-         ierr = VecView(heat,viewer);CHKERRQ(ierr);
+         ierr = VecAssemblyBegin(init);CHKERRQ(ierr);
+         ierr = VecAssemblyEnd(init);CHKERRQ(ierr);
+         ierr = VecView(init,viewer);CHKERRQ(ierr);
          ierr = PetscViewerHDF5PopGroup(viewer);CHKERRQ(ierr);
       } 
    }
