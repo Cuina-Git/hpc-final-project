@@ -13,7 +13,6 @@ int main(int argc,char **args)
 
    Vec            u, u_new, f, init;      /* approx solution, RHS, exact solution */
    Mat            A;                      /* linear system matrix */
-   PC             pc;                     /* preconditioner context */
    PetscErrorCode ierr;
    PetscViewer	   viewer;
    PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,restart=0,its;
@@ -22,7 +21,7 @@ int main(int argc,char **args)
 
    /* Initialize */
    ierr = PetscInitialize(&argc,&args,(char*)0,help);if (ierr) return ierr;
-   ierr = PetscOptionsGetInt(NULL,NULL,"-n",&n,NULL);CHKERRQ(ierr);
+   ierr = PetscOptionsGetInt(NULL,NULL,"-m",&n,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetInt(NULL,NULL,"-n",&n,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetInt(NULL,NULL,"-rho",&n,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetInt(NULL,NULL,"-c",&n,NULL);CHKERRQ(ierr);
@@ -30,7 +29,6 @@ int main(int argc,char **args)
    ierr = PetscPrintf(PETSC_COMM_WORLD,"delta_t %f \n",delta_t);CHKERRQ(ierr);
 
    /* Assert parameters are positive */
-   assert(t>0.0);
    assert(c>0.0);
    assert(rho>0.0);
    assert(l>0.0);
@@ -145,9 +143,9 @@ int main(int argc,char **args)
       {
          i = 2; value[0] = 20.0*delta_t;
          ierr = VecView(u,viewer);CHKERRQ(ierr);
+
          ierr = PetscViewerHDF5PushGroup(viewer, "/init");CHKERRQ(ierr);
          ierr = VecSetValues(init,1,&i,value,ADD_VALUES);CHKERRQ(ierr);
-
          ierr = VecAssemblyBegin(init);CHKERRQ(ierr);
          ierr = VecAssemblyEnd(init);CHKERRQ(ierr);
          ierr = VecView(init,viewer);CHKERRQ(ierr);

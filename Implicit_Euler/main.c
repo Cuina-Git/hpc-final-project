@@ -134,7 +134,7 @@ int main(int argc,char **args)
 
    ierr = VecDestroy(&u);CHKERRQ(ierr); ierr = VecDestroy(&u_new);CHKERRQ(ierr); 
    ierr = VecDestroy(&f);CHKERRQ(ierr); ierr = MatDestroy(&A);CHKERRQ(ierr);
-   ierr = MatDestroy(&ksp);CHKERRQ(ierr);
+   ierr = KSPDestroy(&ksp);CHKERRQ(ierr);
 
    ierr = PetscFinalize();
    return ierr;
