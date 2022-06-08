@@ -4,7 +4,9 @@ static char help[] = "Solves r the transient heat equation in a one-dimensional 
   Include "petscksp.h" so that we can use KSP solvers. 
 */
 #include <petscksp.h>
+#include <petscviewerhdf5.h>
 #include <assert.h>
+#define FILE "data.h5"
 
 int main(int argc,char **args)
 {
@@ -20,6 +22,11 @@ int main(int argc,char **args)
    /* Initialize */
    ierr = PetscInitialize(&argc,&args,(char*)0,help);if (ierr) return ierr;
    ierr = PetscOptionsGetInt(NULL,NULL,"-n",&n,NULL);CHKERRQ(ierr);
+   ierr = PetscOptionsGetInt(NULL,NULL,"-n",&n,NULL);CHKERRQ(ierr);
+   ierr = PetscOptionsGetInt(NULL,NULL,"-rho",&n,NULL);CHKERRQ(ierr);
+   ierr = PetscOptionsGetInt(NULL,NULL,"-c",&n,NULL);CHKERRQ(ierr);
+   ierr = PetscOptionsGetInt(NULL,NULL,"-l",&n,NULL);CHKERRQ(ierr);
+   ierr = PetscPrintf(PETSC_COMM_WORLD,"delta_t %f \n",delta_t);CHKERRQ(ierr);
 
    /* Assert parameters are positive */
    assert(t>0.0);
@@ -101,6 +108,18 @@ int main(int argc,char **args)
    ierr = MatAssemblyEnd(A,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
    ierr = MatView(A,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
+   /* Create HDF for checkpoints restart */
+   if(!restart) {
+      ierr = PetscViewerHDF5Open(PETSC_COMM_WORLD,FILE,FILE_MODE_WRITE,&viewer);CHKERRQ(ierr);
+   } else if (restart) 
+   {
+      ierr = PetscViewerHDF5Open(PETSC_COMM_WORLD,FILE,FILE_MODE_UPDATE,&viewer);CHKERRQ(ierr);
+      ierr = VecLoad(u,viewer);CHKERRQ(ierr);
+      ierr = PetscViewerHDF5PushGroup(viewer, "/heat");CHKERRQ(ierr);
+      ierr = VecLoad(heat,viewer);CHKERRQ(ierr);
+      ierr = PetscViewerHDF5PopGroup(viewer);CHKERRQ(ierr);
+   }
+
    /* Slove the heat equation */
     while (its < n){
       ierr = MatMultAdd(A,u,f,u_new);CHKERRQ(ierr);
@@ -111,8 +130,21 @@ int main(int argc,char **args)
       ierr = VecAssemblyBegin(u_new);CHKERRQ(ierr);
       ierr = VecAssemblyEnd(u_new);CHKERRQ(ierr);
       ierr = VecCopy(u_new,u);CHKERRQ(ierr);
-      //ierr = VecView(u_new,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
       its++;
+
+      /* Write HDF5 every 10 iterations for checkpoints restart */
+      i = 2; value[0] = 10.0*dt;
+      if (its % 20 == 0)
+      {
+         ierr = VecView(u,viewer);CHKERRQ(ierr);
+         ierr = PetscViewerHDF5PushGroup(viewer, "/heat");CHKERRQ(ierr);
+         ierr = VecSetValues(heat,1,&i,value,ADD_VALUES);CHKERRQ(ierr);
+
+         ierr = VecAssemblyBegin(heat);CHKERRQ(ierr);
+         ierr = VecAssemblyEnd(heat);CHKERRQ(ierr);
+         ierr = VecView(heat,viewer);CHKERRQ(ierr);
+         ierr = PetscViewerHDF5PopGroup(viewer);CHKERRQ(ierr);
+      } 
    }
    ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
