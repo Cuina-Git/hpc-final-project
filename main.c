@@ -37,14 +37,9 @@ int main(int argc,char **args)
    ierr = VecSet(u,zero);CHKERRQ(ierr);
    ierr = VecSet(f,zero);CHKERRQ(ierr);
    if (rank == 0){
-      for (i = 0; i < m; i++) {
-         if (i == 0 || i == m-1) {
-	         ierr = VecSetValues(u,1,&i,&zero,INSERT_VALUES);CHKERRQ(ierr);
-         } 
-         else {
-            ui   = exp(i*delta_x);
-            ierr = VecSetValues(u,1,&i,&ui,INSERT_VALUES);CHKERRQ(ierr);
-         }
+      for (i = 1; i < m-1; i++) {
+         ui   = exp(i*delta_x);
+         ierr = VecSetValues(u,1,&i,&ui,INSERT_VALUES);CHKERRQ(ierr);
          fi   = sin(l*PETSC_PI*i*delta_x);
          ierr = VecSetValues(f,1,&i,&fi,INSERT_VALUES);CHKERRQ(ierr);
       }
@@ -56,9 +51,9 @@ int main(int argc,char **args)
    ierr = VecAssemblyBegin(f);CHKERRQ(ierr);
    ierr = VecAssemblyEnd(f);CHKERRQ(ierr);
   
+   ierr = VecScale(f,(PetscScalar)delta_t);CHKERRQ(ierr);
    ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
    ierr = VecView(f,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
-   ierr = VecScale(f,(PetscScalar)delta_t);CHKERRQ(ierr);
 
    /* create matrix object */
    ierr = MatCreate(PETSC_COMM_WORLD,&A);CHKERRQ(ierr);
