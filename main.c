@@ -12,11 +12,11 @@ int main(int argc,char **args)
 {
 
    Vec            u, u_new, f, heat;      /* approx solution, RHS, exact solution */
-   Mat            A;                /* linear system matrix */
-   PC             pc;               /* preconditioner context */
+   Mat            A;                      /* linear system matrix */
+   PC             pc;                     /* preconditioner context */
    PetscErrorCode ierr;
    PetscViewer	   viewer;
-   PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,,restart=0,its;
+   PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,restart=0,its;
    PetscScalar    zero = 0.0,t = 1.0,rho = 1.0,c = 1.0,k = 1.0,l = 1.0,value[3],ui,fi;
    PetscReal      time,delta_x = 0.01,delta_t = t/n,r=k*delta_t/(rho*c*delta_x*delta_x);
 
@@ -139,7 +139,7 @@ int main(int argc,char **args)
          i = 2; value[0] = 20.0*delta_t;
          ierr = VecView(u,viewer);CHKERRQ(ierr);
          ierr = PetscViewerHDF5PushGroup(viewer, "/heat");CHKERRQ(ierr);
-         ierr = VecSetValues(heat,1,&i,value[0],ADD_VALUES);CHKERRQ(ierr);
+         ierr = VecSetValues(heat,1,&i,value,ADD_VALUES);CHKERRQ(ierr);
 
          ierr = VecAssemblyBegin(heat);CHKERRQ(ierr);
          ierr = VecAssemblyEnd(heat);CHKERRQ(ierr);
