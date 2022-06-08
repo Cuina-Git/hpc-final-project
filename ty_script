@@ -2,7 +2,7 @@
 #BSUB -J petsc-test
 #BSUB -q ser
 #BSUB -n 10
-#BSUB -m 'r01n13'
+#BSUB -m 'r01n23'
 #BSUB -e petsc.err
 #BSUB -o petsc.out
 
@@ -10,7 +10,7 @@ module purge
 module load intel/2018.4
 module load mpi/intel/2018.4
 
-mpirun -np 5 ./main.out -n 20 \
+mpirun -np 10 ./main.out -n 100000 \
   -ksp_type gmres \
   -pc_type asm \
   -ksp_monitor_short \
