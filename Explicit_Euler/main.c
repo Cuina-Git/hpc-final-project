@@ -11,8 +11,6 @@ int main(int argc,char **args)
 
    Vec            u, u_new, f;      /* approx solution, RHS, exact solution */
    Mat            A;                /* linear system matrix */
-   KSP            ksp;              /* linear solver context */
-   PC             pc;               /* preconditioner context */
    PetscErrorCode ierr;
    PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,its;
    PetscScalar    zero = 0.0,t = 1.0,rho = 1.0,c = 1.0,k = 1.0,l = 1.0,value[3],ui,fi;
@@ -80,18 +78,18 @@ int main(int argc,char **args)
    if (!rstart) 
    {
       rstart = 1;
-      i      = 0; col[0] = 0; col[1] = 1; value[0] = 1.0+2.0*r; value[1] = -r;
+      i      = 0; col[0] = 0; col[1] = 1; value[0] = 1.0-2.0*r; value[1] = r;
       ierr   = MatSetValues(A,1,&i,2,col,value,INSERT_VALUES);CHKERRQ(ierr);
    }
   
    if (rend == m) 
    {
       rend = m-1;
-      i    = m-1; col[0] = m-2; col[1] = m-1; value[0] = -r; value[1] = 1.0+2.0*r;
+      i    = m-1; col[0] = m-2; col[1] = m-1; value[0] = r; value[1] = 1.0-2.0*r;
       ierr = MatSetValues(A,1,&i,2,col,value,INSERT_VALUES);CHKERRQ(ierr);
    }
 
-   value[0] = -r; value[1] = 1.0+2.0*r; value[2] = -r;
+   value[0] = r; value[1] = 1.0-2.0*r; value[2] = r;
    for (i=rstart; i<rend; i++) 
    {
       col[0] = i-1; col[1] = i; col[2] = i+1;
@@ -103,24 +101,9 @@ int main(int argc,char **args)
    ierr = MatAssemblyEnd(A,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
    ierr = MatView(A,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
-    /* Create slover KSP */
-   ierr = KSPCreate(PETSC_COMM_WORLD,&ksp);CHKERRQ(ierr);
-
-   /* Set operators. */
-   ierr = KSPSetOperators(ksp,A,A);CHKERRQ(ierr);
-
-   /* Set default of KSP */
-   ierr = KSPGetPC(ksp,&pc);CHKERRQ(ierr);
-   ierr = PCSetType(pc,PCJACOBI);CHKERRQ(ierr);
-   ierr = KSPSetTolerances(ksp,1.e-7,PETSC_DEFAULT,PETSC_DEFAULT,PETSC_DEFAULT);CHKERRQ(ierr);
-
-   /* Set options of KSP,we can replace it in script */
-   ierr = KSPSetFromOptions(ksp);CHKERRQ(ierr);
-
    /* Slove the heat equation */
     while (its < n){
-      ierr = VecAYPX(u,1,f);CHKERRQ(ierr);
-      ierr = KSPSolve(ksp,u,u_new);CHKERRQ(ierr);
+      ierr = MatMultAdd(A,u,f,u_new);CHKERRQ(ierr);
       i = 0;
       ierr = VecSetValues(u_new,1,&i,&zero,INSERT_VALUES);CHKERRQ(ierr);
       i = m-1;
@@ -128,14 +111,12 @@ int main(int argc,char **args)
       ierr = VecAssemblyBegin(u_new);CHKERRQ(ierr);
       ierr = VecAssemblyEnd(u_new);CHKERRQ(ierr);
       ierr = VecCopy(u_new,u);CHKERRQ(ierr);
-      //ierr = VecView(u_new,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
       its++;
    }
    ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
    ierr = VecDestroy(&u);CHKERRQ(ierr); ierr = VecDestroy(&u_new);CHKERRQ(ierr); 
    ierr = VecDestroy(&f);CHKERRQ(ierr); ierr = MatDestroy(&A);CHKERRQ(ierr);
-   ierr = KSPDestroy(&ksp);CHKERRQ(ierr);
 
    ierr = PetscFinalize();
    return ierr;
