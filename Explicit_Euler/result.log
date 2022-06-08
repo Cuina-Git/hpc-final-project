@@ -1,0 +1,28 @@
+delta_t 0.000010 
+[9]PETSC ERROR: --------------------- Error Message --------------------------------------------------------------
+[9]PETSC ERROR: Object is in wrong state
+[9]PETSC ERROR: Not for unassembled vector
+[9]PETSC ERROR: See https://petsc.org/release/faq/ for trouble shooting.
+[9]PETSC ERROR: Petsc Release Version 3.16.6, Mar 30, 2022 
+[9]PETSC ERROR: ./main.out on a  named r01n17 by mae-cuin Thu Jun  9 07:06:21 2022
+[9]PETSC ERROR: Configure options --with-mpi-dir=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/ --with-blaslapack-dir=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/ --with-debugging=no --prefix=/work/mae-cuin/lib/petsc-3.16.6-opt --download-hypre --download-mumps --download-metis --download-hdf5 COPTFLAGS="-O3 -march=native -mtune=native" CXXOPTFLAGS="-O3 -march=native -mtune=native" FOPTFLAGS="-O3 -march=native -mtune=native" --with-scalapack-include=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/include --with-scalapack-lib="-L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/lib/intel64 -lmkl_blacs_intelmpi_lp64 -lmkl_scalapack_lp64"
+[9]PETSC ERROR: #1 VecCopy() at /work/mae-cuin/lib/petsc-3.16.6/src/vec/vec/interface/vector.c:1550
+[9]PETSC ERROR: #2 main() at main.c:116
+[0]PETSC ERROR: --------------------- Error Message --------------------------------------------------------------
+[0]PETSC ERROR: Object is in wrong state
+[0]PETSC ERROR: Not for unassembled vector
+[0]PETSC ERROR: See https://petsc.org/release/faq/ for trouble shooting.
+[0]PETSC ERROR: Petsc Release Version 3.16.6, Mar 30, 2022 
+[0]PETSC ERROR: ./main.out on a  named r01n20 by mae-cuin Thu Jun  9 07:06:21 2022
+[0]PETSC ERROR: Configure options --with-mpi-dir=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/ --with-blaslapack-dir=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/ --with-debugging=no --prefix=/work/mae-cuin/lib/petsc-3.16.6-opt --download-hypre --download-mumps --download-metis --download-hdf5 COPTFLAGS="-O3 -march=native -mtune=native" CXXOPTFLAGS="-O3 -march=native -mtune=native" FOPTFLAGS="-O3 -march=native -mtune=native" --with-scalapack-include=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/include --with-scalapack-lib="-L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/lib/intel64 -lmkl_blacs_intelmpi_lp64 -lmkl_scalapack_lp64"
+[0]PETSC ERROR: #1 VecCopy() at /work/mae-cuin/lib/petsc-3.16.6/src/vec/vec/interface/vector.c:1550
+[0]PETSC ERROR: #2 main() at main.c:116
+[0]PETSC ERROR: PETSc Option Table entries:
+[0]PETSC ERROR: -log_view
+[0]PETSC ERROR: -n 100000
+[0]PETSC ERROR: ----------------End of Error Message -------send entire error message to petsc-maint@mcs.anl.gov----------
+application called MPI_Abort(MPI_COMM_WORLD, 73) - process 0
+[9]PETSC ERROR: PETSc Option Table entries:
+[9]PETSC ERROR: -log_view
+[9]PETSC ERROR: -n 100000
+[9]PETSC ERROR: ----------------End of Error Message -------send entire error message to petsc-maint@mcs.anl.gov----------

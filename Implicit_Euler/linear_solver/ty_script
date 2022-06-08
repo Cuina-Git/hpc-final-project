@@ -9,12 +9,12 @@ module purge
 module load intel/2018.4
 module load mpi/intel/2018.4
 
-mpirun -np 10 ./main.out -n 100 \
+mpirun -np 10 ../main.out -n 1000 \
   -ksp_type gmres \
-  -pc_type asm \
+  -pc_type jacobi \
   -log_view > result_1.log 2>&1
 
-mpirun -np 10 ./main.out -n 1000 \
+mpirun -np 10 ../main.out -n 1000 \
   -ksp_type gmres \
-  -pc_type asm \
+  -pc_type  \
   -log_view > result_2.log 2>&1

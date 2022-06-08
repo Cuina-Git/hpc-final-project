@@ -1,0 +1,20 @@
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 8
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+#mpirun -np 16 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+#mpirun -np 32 ../main.out -n 100000 -log_view > result5.log 2>&1

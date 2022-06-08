@@ -1,0 +1,585 @@
+delta_t 0.001000 
+Vec Object: 10 MPI processes
+  type: mpi
+Process [0]
+0.
+1.01005
+1.0202
+1.03045
+1.04081
+1.05127
+1.06184
+1.07251
+1.08329
+1.09417
+1.10517
+Process [1]
+1.11628
+1.1275
+1.13883
+1.15027
+1.16183
+1.17351
+1.1853
+1.19722
+1.20925
+1.2214
+Process [2]
+1.23368
+1.24608
+1.2586
+1.27125
+1.28403
+1.29693
+1.30996
+1.32313
+1.33643
+1.34986
+Process [3]
+1.36343
+1.37713
+1.39097
+1.40495
+1.41907
+1.43333
+1.44773
+1.46228
+1.47698
+1.49182
+Process [4]
+1.50682
+1.52196
+1.53726
+1.55271
+1.56831
+1.58407
+1.59999
+1.61607
+1.63232
+1.64872
+Process [5]
+1.66529
+1.68203
+1.69893
+1.71601
+1.73325
+1.75067
+1.76827
+1.78604
+1.80399
+1.82212
+Process [6]
+1.84043
+1.85893
+1.87761
+1.89648
+1.91554
+1.93479
+1.95424
+1.97388
+1.99372
+2.01375
+Process [7]
+2.03399
+2.05443
+2.07508
+2.09594
+2.117
+2.13828
+2.15977
+2.18147
+2.2034
+2.22554
+Process [8]
+2.24791
+2.2705
+2.29332
+2.31637
+2.33965
+2.36316
+2.38691
+2.4109
+2.43513
+2.4596
+Process [9]
+2.48432
+2.50929
+2.53451
+2.55998
+2.58571
+2.6117
+2.63794
+2.66446
+2.69123
+0.
+Vec Object: 10 MPI processes
+  type: mpi
+Process [0]
+0.
+3.14108e-05
+6.27905e-05
+9.41083e-05
+0.000125333
+0.000156434
+0.000187381
+0.000218143
+0.00024869
+0.000278991
+0.000309017
+Process [1]
+0.000338738
+0.000368125
+0.000397148
+0.000425779
+0.00045399
+0.000481754
+0.000509041
+0.000535827
+0.000562083
+0.000587785
+Process [2]
+0.000612907
+0.000637424
+0.000661312
+0.000684547
+0.000707107
+0.000728969
+0.000750111
+0.000770513
+0.000790155
+0.000809017
+Process [3]
+0.000827081
+0.000844328
+0.000860742
+0.000876307
+0.000891007
+0.000904827
+0.000917755
+0.000929776
+0.000940881
+0.000951057
+Process [4]
+0.000960294
+0.000968583
+0.000975917
+0.000982287
+0.000987688
+0.000992115
+0.000995562
+0.000998027
+0.000999507
+0.001
+Process [5]
+0.000999507
+0.000998027
+0.000995562
+0.000992115
+0.000987688
+0.000982287
+0.000975917
+0.000968583
+0.000960294
+0.000951057
+Process [6]
+0.000940881
+0.000929776
+0.000917755
+0.000904827
+0.000891007
+0.000876307
+0.000860742
+0.000844328
+0.000827081
+0.000809017
+Process [7]
+0.000790155
+0.000770513
+0.000750111
+0.000728969
+0.000707107
+0.000684547
+0.000661312
+0.000637424
+0.000612907
+0.000587785
+Process [8]
+0.000562083
+0.000535827
+0.000509041
+0.000481754
+0.00045399
+0.000425779
+0.000397148
+0.000368125
+0.000338738
+0.000309017
+Process [9]
+0.000278991
+0.00024869
+0.000218143
+0.000187381
+0.000156434
+0.000125333
+9.41083e-05
+6.27905e-05
+3.14108e-05
+-3.21625e-19
+Mat Object: 10 MPI processes
+  type: mpiaij
+row 0: (0, 21.)  (1, -10.) 
+row 1: (0, -10.)  (1, 21.)  (2, -10.) 
+row 2: (1, -10.)  (2, 21.)  (3, -10.) 
+row 3: (2, -10.)  (3, 21.)  (4, -10.) 
+row 4: (3, -10.)  (4, 21.)  (5, -10.) 
+row 5: (4, -10.)  (5, 21.)  (6, -10.) 
+row 6: (5, -10.)  (6, 21.)  (7, -10.) 
+row 7: (6, -10.)  (7, 21.)  (8, -10.) 
+row 8: (7, -10.)  (8, 21.)  (9, -10.) 
+row 9: (8, -10.)  (9, 21.)  (10, -10.) 
+row 10: (9, -10.)  (10, 21.)  (11, -10.) 
+row 11: (10, -10.)  (11, 21.)  (12, -10.) 
+row 12: (11, -10.)  (12, 21.)  (13, -10.) 
+row 13: (12, -10.)  (13, 21.)  (14, -10.) 
+row 14: (13, -10.)  (14, 21.)  (15, -10.) 
+row 15: (14, -10.)  (15, 21.)  (16, -10.) 
+row 16: (15, -10.)  (16, 21.)  (17, -10.) 
+row 17: (16, -10.)  (17, 21.)  (18, -10.) 
+row 18: (17, -10.)  (18, 21.)  (19, -10.) 
+row 19: (18, -10.)  (19, 21.)  (20, -10.) 
+row 20: (19, -10.)  (20, 21.)  (21, -10.) 
+row 21: (20, -10.)  (21, 21.)  (22, -10.) 
+row 22: (21, -10.)  (22, 21.)  (23, -10.) 
+row 23: (22, -10.)  (23, 21.)  (24, -10.) 
+row 24: (23, -10.)  (24, 21.)  (25, -10.) 
+row 25: (24, -10.)  (25, 21.)  (26, -10.) 
+row 26: (25, -10.)  (26, 21.)  (27, -10.) 
+row 27: (26, -10.)  (27, 21.)  (28, -10.) 
+row 28: (27, -10.)  (28, 21.)  (29, -10.) 
+row 29: (28, -10.)  (29, 21.)  (30, -10.) 
+row 30: (29, -10.)  (30, 21.)  (31, -10.) 
+row 31: (30, -10.)  (31, 21.)  (32, -10.) 
+row 32: (31, -10.)  (32, 21.)  (33, -10.) 
+row 33: (32, -10.)  (33, 21.)  (34, -10.) 
+row 34: (33, -10.)  (34, 21.)  (35, -10.) 
+row 35: (34, -10.)  (35, 21.)  (36, -10.) 
+row 36: (35, -10.)  (36, 21.)  (37, -10.) 
+row 37: (36, -10.)  (37, 21.)  (38, -10.) 
+row 38: (37, -10.)  (38, 21.)  (39, -10.) 
+row 39: (38, -10.)  (39, 21.)  (40, -10.) 
+row 40: (39, -10.)  (40, 21.)  (41, -10.) 
+row 41: (40, -10.)  (41, 21.)  (42, -10.) 
+row 42: (41, -10.)  (42, 21.)  (43, -10.) 
+row 43: (42, -10.)  (43, 21.)  (44, -10.) 
+row 44: (43, -10.)  (44, 21.)  (45, -10.) 
+row 45: (44, -10.)  (45, 21.)  (46, -10.) 
+row 46: (45, -10.)  (46, 21.)  (47, -10.) 
+row 47: (46, -10.)  (47, 21.)  (48, -10.) 
+row 48: (47, -10.)  (48, 21.)  (49, -10.) 
+row 49: (48, -10.)  (49, 21.)  (50, -10.) 
+row 50: (49, -10.)  (50, 21.)  (51, -10.) 
+row 51: (50, -10.)  (51, 21.)  (52, -10.) 
+row 52: (51, -10.)  (52, 21.)  (53, -10.) 
+row 53: (52, -10.)  (53, 21.)  (54, -10.) 
+row 54: (53, -10.)  (54, 21.)  (55, -10.) 
+row 55: (54, -10.)  (55, 21.)  (56, -10.) 
+row 56: (55, -10.)  (56, 21.)  (57, -10.) 
+row 57: (56, -10.)  (57, 21.)  (58, -10.) 
+row 58: (57, -10.)  (58, 21.)  (59, -10.) 
+row 59: (58, -10.)  (59, 21.)  (60, -10.) 
+row 60: (59, -10.)  (60, 21.)  (61, -10.) 
+row 61: (60, -10.)  (61, 21.)  (62, -10.) 
+row 62: (61, -10.)  (62, 21.)  (63, -10.) 
+row 63: (62, -10.)  (63, 21.)  (64, -10.) 
+row 64: (63, -10.)  (64, 21.)  (65, -10.) 
+row 65: (64, -10.)  (65, 21.)  (66, -10.) 
+row 66: (65, -10.)  (66, 21.)  (67, -10.) 
+row 67: (66, -10.)  (67, 21.)  (68, -10.) 
+row 68: (67, -10.)  (68, 21.)  (69, -10.) 
+row 69: (68, -10.)  (69, 21.)  (70, -10.) 
+row 70: (69, -10.)  (70, 21.)  (71, -10.) 
+row 71: (70, -10.)  (71, 21.)  (72, -10.) 
+row 72: (71, -10.)  (72, 21.)  (73, -10.) 
+row 73: (72, -10.)  (73, 21.)  (74, -10.) 
+row 74: (73, -10.)  (74, 21.)  (75, -10.) 
+row 75: (74, -10.)  (75, 21.)  (76, -10.) 
+row 76: (75, -10.)  (76, 21.)  (77, -10.) 
+row 77: (76, -10.)  (77, 21.)  (78, -10.) 
+row 78: (77, -10.)  (78, 21.)  (79, -10.) 
+row 79: (78, -10.)  (79, 21.)  (80, -10.) 
+row 80: (79, -10.)  (80, 21.)  (81, -10.) 
+row 81: (80, -10.)  (81, 21.)  (82, -10.) 
+row 82: (81, -10.)  (82, 21.)  (83, -10.) 
+row 83: (82, -10.)  (83, 21.)  (84, -10.) 
+row 84: (83, -10.)  (84, 21.)  (85, -10.) 
+row 85: (84, -10.)  (85, 21.)  (86, -10.) 
+row 86: (85, -10.)  (86, 21.)  (87, -10.) 
+row 87: (86, -10.)  (87, 21.)  (88, -10.) 
+row 88: (87, -10.)  (88, 21.)  (89, -10.) 
+row 89: (88, -10.)  (89, 21.)  (90, -10.) 
+row 90: (89, -10.)  (90, 21.)  (91, -10.) 
+row 91: (90, -10.)  (91, 21.)  (92, -10.) 
+row 92: (91, -10.)  (92, 21.)  (93, -10.) 
+row 93: (92, -10.)  (93, 21.)  (94, -10.) 
+row 94: (93, -10.)  (94, 21.)  (95, -10.) 
+row 95: (94, -10.)  (95, 21.)  (96, -10.) 
+row 96: (95, -10.)  (96, 21.)  (97, -10.) 
+row 97: (96, -10.)  (97, 21.)  (98, -10.) 
+row 98: (97, -10.)  (98, 21.)  (99, -10.) 
+row 99: (98, -10.)  (99, 21.)  (100, -10.) 
+row 100: (99, -10.)  (100, 21.) 
+Vec Object: 10 MPI processes
+  type: mpi
+Process [0]
+0.
+0.00608557
+0.0092701
+0.0124483
+0.0156171
+0.0187734
+0.021914
+0.0250358
+0.0281357
+0.0312108
+0.0342579
+Process [1]
+0.0372741
+0.0402563
+0.0432016
+0.0461072
+0.0489702
+0.0517876
+0.0545568
+0.0572751
+0.0599396
+0.0625479
+Process [2]
+0.0650973
+0.0675854
+0.0700095
+0.0723675
+0.0746569
+0.0768754
+0.079021
+0.0810915
+0.0830847
+0.0849989
+Process [3]
+0.086832
+0.0885823
+0.090248
+0.0918275
+0.0933193
+0.0947218
+0.0960337
+0.0972537
+0.0983805
+0.0994132
+Process [4]
+0.100351
+0.101192
+0.101936
+0.102582
+0.103131
+0.10358
+0.10393
+0.10418
+0.10433
+0.10438
+Process [5]
+0.10433
+0.10418
+0.10393
+0.10358
+0.103131
+0.102582
+0.101936
+0.101192
+0.100351
+0.0994131
+Process [6]
+0.0983805
+0.0972536
+0.0960336
+0.0947217
+0.0933192
+0.0918274
+0.0902479
+0.0885822
+0.0868319
+0.0849988
+Process [7]
+0.0830847
+0.0810914
+0.0790209
+0.0768754
+0.0746568
+0.0723674
+0.0700095
+0.0675853
+0.0650973
+0.0625479
+Process [8]
+0.0599396
+0.057275
+0.0545568
+0.0517876
+0.0489701
+0.0461072
+0.0432016
+0.0402562
+0.037274
+0.0342579
+Process [9]
+0.0312108
+0.0281357
+0.0250358
+0.0219139
+0.0187734
+0.0156171
+0.0124483
+0.00927009
+0.00608556
+0.
+************************************************************************************************************************
+***             WIDEN YOUR WINDOW TO 120 CHARACTERS.  Use 'enscript -r -fCourier9' to print this document            ***
+************************************************************************************************************************
+
+---------------------------------------------- PETSc Performance Summary: ----------------------------------------------
+
+../main.out on a  named r01n15 with 10 processors, by mae-cuin Thu Jun  9 05:03:21 2022
+Using Petsc Release Version 3.16.6, Mar 30, 2022 
+
+                         Max       Max/Min     Avg       Total
+Time (sec):           1.068e+00     1.001   1.068e+00
+Objects:              7.200e+01     1.000   7.200e+01
+Flop:                 2.493e+06     1.102   2.330e+06  2.330e+07
+Flop/sec:             2.335e+06     1.101   2.182e+06  2.182e+07
+MPI Messages:         3.314e+04     1.101   3.254e+04  3.254e+05
+MPI Message Lengths:  2.674e+05     1.100   8.079e+00  2.629e+06
+MPI Reductions:       1.609e+04     1.000
+
+Flop counting convention: 1 flop = 1 real number operation of type (multiply/divide/add/subtract)
+                            e.g., VecAXPY() for real vectors of length N --> 2N flop
+                            and VecAXPY() for complex vectors of length N --> 8N flop
+
+Summary of Stages:   ----- Time ------  ----- Flop ------  --- Messages ---  -- Message Lengths --  -- Reductions --
+                        Avg     %Total     Avg     %Total    Count   %Total     Avg         %Total    Count   %Total
+ 0:      Main Stage: 1.0678e+00 100.0%  2.3297e+07 100.0%  3.254e+05 100.0%  8.079e+00      100.0%  1.608e+04  99.9%
+
+------------------------------------------------------------------------------------------------------------------------
+See the 'Profiling' chapter of the users' manual for details on interpreting output.
+Phase summary info:
+   Count: number of times phase was executed
+   Time and Flop: Max - maximum over all processors
+                  Ratio - ratio of maximum to minimum over all processors
+   Mess: number of messages sent
+   AvgLen: average message length (bytes)
+   Reduct: number of global reductions
+   Global: entire computation
+   Stage: stages of a computation. Set stages with PetscLogStagePush() and PetscLogStagePop().
+      %T - percent time in this phase         %F - percent flop in this phase
+      %M - percent messages in this phase     %L - percent message lengths in this phase
+      %R - percent reductions in this phase
+   Total Mflop/s: 10e-6 * (sum of flop over all processors)/(max time over all processors)
+------------------------------------------------------------------------------------------------------------------------
+Event                Count      Time (sec)     Flop                              --- Global ---  --- Stage ----  Total
+                   Max Ratio  Max     Ratio   Max  Ratio  Mess   AvgLen  Reduct  %T %F %M %L %R  %T %F %M %L %R Mflop/s
+------------------------------------------------------------------------------------------------------------------------
+
+--- Event Stage 0: Main Stage
+
+BuildTwoSided       1008 1.0 1.4665e-01 1.9 0.00e+00 0.0 1.8e+04 1.2e+01 1.0e+03 10  0  6  8  6  10  0  6  8  6     0
+BuildTwoSidedF      1004 1.0 1.2668e-01 2.0 0.00e+00 0.0 5.5e+04 8.4e+00 1.0e+03  9  0 17 17  6   9  0 17 17  6     0
+VecView                3 1.0 4.9410e-03 6.4 0.00e+00 0.0 4.5e+01 5.2e+01 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecMDot             7016 1.0 2.6694e-01 1.5 5.91e+05 1.1 0.0e+00 0.0e+00 7.0e+03 20 23  0  0 44  20 23  0  0 44    20
+VecNorm             8016 1.0 3.4242e-01 1.5 1.76e+05 1.1 0.0e+00 0.0e+00 8.0e+03 29  7  0  0 50  29  7  0  0 50     5
+VecScale            8017 1.0 1.5481e-02 2.5 8.82e+04 1.1 0.0e+00 0.0e+00 0.0e+00  1  3  0  0  0   1  3  0  0  0    52
+VecCopy             2000 1.0 4.7994e-04 2.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecSet             26056 1.0 4.9288e-03 1.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecAXPY             1000 1.0 4.3273e-04 2.5 2.20e+04 1.1 0.0e+00 0.0e+00 0.0e+00  0  1  0  0  0   0  1  0  0  0   467
+VecAYPX             1000 1.0 6.5136e-04 2.5 2.20e+04 1.1 0.0e+00 0.0e+00 0.0e+00  0  1  0  0  0   0  1  0  0  0   310
+VecMAXPY            8016 1.0 2.8396e-03 2.0 7.73e+05 1.1 0.0e+00 0.0e+00 0.0e+00  0 30  0  0  0   0 30  0  0  0  2500
+VecAssemblyBegin    1002 1.0 1.2450e-01 1.9 0.00e+00 0.0 5.5e+04 8.4e+00 1.0e+03  9  0 17 17  6   9  0 17 17  6     0
+VecAssemblyEnd      1002 1.0 1.5261e-0213.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecScatterBegin    39080 1.0 7.8565e-02 1.6 0.00e+00 0.0 2.7e+05 8.0e+00 2.0e+00  6  0 83 82  0   6  0 83 82  0     0
+VecScatterEnd      39080 1.0 1.6037e-01 6.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  9  0  0  0  0   9  0  0  0  0     0
+VecNormalize        8016 1.0 3.4594e-01 1.5 2.65e+05 1.1 0.0e+00 0.0e+00 8.0e+03 29 10  0  0 50  29 10  0  0 50     7
+MatMult             7016 1.0 1.2610e-01 2.8 3.72e+05 1.1 1.3e+05 8.0e+00 1.0e+00  7 15 39 38  0   7 15 39 38  0    28
+MatSolve            8016 1.0 2.5926e-03 1.9 4.49e+05 1.1 0.0e+00 0.0e+00 0.0e+00  0 19  0  0  0   0 19  0  0  0  1716
+MatLUFactorNum         1 1.0 1.1420e-0422.8 4.50e+01 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     4
+MatILUFactorSym        1 1.0 1.2803e-04 6.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatAssemblyBegin       4 1.0 5.0209e-0335.2 0.00e+00 0.0 0.0e+00 0.0e+00 2.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatAssemblyEnd         4 1.0 2.7186e-02 1.0 0.00e+00 0.0 0.0e+00 0.0e+00 9.0e+00  3  0  0  0  0   3  0  0  0  0     0
+MatGetRowIJ            1 1.0 4.2915e-0513.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatCreateSubMats       1 1.0 2.0900e-02 3.5 0.00e+00 0.0 9.0e+01 1.4e+01 1.0e+00  1  0  0  0  0   1  0  0  0  0     0
+MatCreateSubMat        1 1.0 7.8009e-02 1.0 0.00e+00 0.0 4.5e+01 9.3e+01 1.4e+01  7  0  0  0  0   7  0  0  0  0     0
+MatGetOrdering         1 1.0 8.8215e-05 5.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+MatIncreaseOvrlp       1 1.0 2.1252e-02 3.6 0.00e+00 0.0 0.0e+00 0.0e+00 1.0e+00  2  0  0  0  0   2  0  0  0  0     0
+MatView                1 1.0 1.0994e-01 1.0 0.00e+00 0.0 6.3e+01 6.8e+01 1.9e+01 10  0  0  0  0  10  0  0  0  0     0
+SFSetGraph             5 1.0 2.8610e-06 2.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFSetUp                4 1.0 2.5120e-02 9.0 0.00e+00 0.0 7.2e+01 4.0e+00 2.0e+00  2  0  0  0  0   2  0  0  0  0     0
+SFReduceBegin       8016 1.0 2.3594e-03 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFReduceEnd         8016 1.0 2.1594e-03 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFPack             39080 1.0 6.3000e-03 1.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFUnpack           39080 1.0 4.1432e-03 1.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+KSPSetUp               2 1.0 3.3188e-04 8.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+KSPSolve            1000 1.0 7.6059e-01 1.1 2.47e+06 1.1 2.7e+05 8.0e+00 1.5e+04 68 99 83 82 93  68 99 83 82 94    30
+KSPGMRESOrthog      7016 1.0 2.7105e-01 1.5 1.21e+06 1.1 0.0e+00 0.0e+00 7.0e+03 20 48  0  0 44  20 48  0  0 44    41
+PCSetUp                2 1.0 5.3986e-02 1.2 4.50e+01 1.1 9.0e+01 1.4e+01 7.0e+00  4  0  0  0  0   4  0  0  0  0     0
+PCSetUpOnBlocks     1000 1.0 5.8079e-04 2.5 4.50e+01 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     1
+PCApply             8016 1.0 1.6840e-01 2.2 4.49e+05 1.1 1.4e+05 8.0e+00 1.0e+00 11 19 44 44  0  11 19 44 44  0    26
+PCApplyOnBlocks     8016 1.0 2.4050e-02 2.3 4.49e+05 1.1 0.0e+00 0.0e+00 0.0e+00  1 19  0  0  0   1 19  0  0  0   185
+------------------------------------------------------------------------------------------------------------------------
+
+Memory usage is given in bytes:
+
+Object Type          Creations   Destructions     Memory  Descendants' Mem.
+Reports information only for process 0.
+
+--- Event Stage 0: Main Stage
+
+              Vector    28             28        50352     0.
+              Viewer     3              2         1680     0.
+              Matrix    10             10        48680     0.
+           Index Set    16             16        14976     0.
+   IS L to G Mapping     1              1          768     0.
+   Star Forest Graph     7              7         8112     0.
+       Krylov Solver     2              2        20440     0.
+      Preconditioner     2              2         2056     0.
+    Distributed Mesh     1              1         5048     0.
+     Discrete System     1              1          896     0.
+           Weak Form     1              1          616     0.
+========================================================================================================================
+Average time to get PetscTime(): 0.
+Average time for MPI_Barrier(): 2.81811e-05
+Average time for zero size MPI_Send(): 5.29289e-06
+#PETSc Option Table entries:
+-ksp_type gmres
+-log_view
+-n 1000
+-pc_type asm
+#End of PETSc Option Table entries
+Compiled without FORTRAN kernels
+Compiled with full precision matrices (default)
+sizeof(short) 2 sizeof(int) 4 sizeof(long) 8 sizeof(void*) 8 sizeof(PetscScalar) 8 sizeof(PetscInt) 4
+Configure options: --with-mpi-dir=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/ --with-blaslapack-dir=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/ --with-debugging=no --prefix=/work/mae-cuin/lib/petsc-3.16.6-opt --download-hypre --download-mumps --download-metis --download-hdf5 COPTFLAGS="-O3 -march=native -mtune=native" CXXOPTFLAGS="-O3 -march=native -mtune=native" FOPTFLAGS="-O3 -march=native -mtune=native" --with-scalapack-include=/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/include --with-scalapack-lib="-L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/lib/intel64 -lmkl_blacs_intelmpi_lp64 -lmkl_scalapack_lp64"
+-----------------------------------------
+Libraries compiled on 2022-05-04 08:04:13 on login03 
+Machine characteristics: Linux-3.10.0-862.el7.x86_64-x86_64-with-redhat-7.5-Maipo
+Using PETSc directory: /work/mae-cuin/lib/petsc-3.16.6-opt
+Using PETSc arch: 
+-----------------------------------------
+
+Using C compiler: /share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpiicc  -fPIC -wd1572 -Wno-unknown-pragmas -O3 -march=native -mtune=native  -std=c99 
+Using Fortran compiler: /share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpiifort  -fPIC -O3 -march=native -mtune=native     -std=c99
+-----------------------------------------
+
+Using include paths: -I/work/mae-cuin/lib/petsc-3.16.6-opt/include -I/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/include
+-----------------------------------------
+
+Using C linker: /share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpiicc
+Using Fortran linker: /share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpiifort
+Using libraries: -Wl,-rpath,/work/mae-cuin/lib/petsc-3.16.6-opt/lib -L/work/mae-cuin/lib/petsc-3.16.6-opt/lib -lpetsc -Wl,-rpath,/work/mae-cuin/lib/petsc-3.16.6-opt/lib -L/work/mae-cuin/lib/petsc-3.16.6-opt/lib -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/lib/intel64 -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mkl/lib/intel64 -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/lib/release_mt -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/lib/release_mt -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/lib -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/mpi/intel64/lib -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/tbb/lib/intel64_lin/gcc4.4 -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/tbb/lib/intel64_lin/gcc4.4 -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/daal/lib/intel64_lin -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/daal/lib/intel64_lin -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/tbb/lib/intel64/gcc4.4 -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/tbb/lib/intel64/gcc4.4 -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64 -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64 -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/ipp/lib/intel64 -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/ipp/lib/intel64 -Wl,-rpath,/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64_lin -L/share/intel/2018u4/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64_lin -Wl,-rpath,/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -Wl,-rpath,/opt/intel/mpi-rt/2017.0.0/intel64/lib/release_mt -Wl,-rpath,/opt/intel/mpi-rt/2017.0.0/intel64/lib -lHYPRE -lcmumps -ldmumps -lsmumps -lzmumps -lmumps_common -lpord -lmkl_blacs_intelmpi_lp64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_core -lmkl_sequential -lpthread -lhdf5_hl -lhdf5 -lmetis -lX11 -lstdc++ -ldl -lmpifort -lmpi -lmpigi -lrt -lpthread -lifport -lifcoremt_pic -limf -lsvml -lm -lipgo -lirc -lgcc_s -lirc_s -lquadmath -lstdc++ -ldl
+-----------------------------------------
+

@@ -5,6 +5,7 @@ static char help[] = "Solves r the transient heat equation in a one-dimensional 
 */
 #include <petscksp.h>
 #include <assert.h>
+#include <mpi.h>
 
 int main(int argc,char **args)
 {
@@ -14,13 +15,14 @@ int main(int argc,char **args)
    PetscErrorCode ierr;
    PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,its;
    PetscScalar    zero = 0.0,t = 1.0,rho = 1.0,c = 1.0,k = 1.0,l = 1.0,value[3],ui,fi;
-   PetscReal      time,delta_x = 0.01,delta_t = t/n,r=k*delta_t/(rho*c*delta_x*delta_x);
 
    /* Initialize */
    ierr = PetscInitialize(&argc,&args,(char*)0,help);if (ierr) return ierr;
    ierr = PetscOptionsGetInt(NULL,NULL,"-m",&m,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetInt(NULL,NULL,"-n",&n,NULL);CHKERRQ(ierr);
-
+   PetscReal      t1,t2,delta_x = 1.0/(m-1),delta_t = t/n,r=k*delta_t/(rho*c*delta_x*delta_x);
+   ierr = PetscPrintf(PETSC_COMM_WORLD,"delta_t %f \n",delta_t);CHKERRQ(ierr);
+   
    /* Assert parameters are positive */
    assert(t>0.0);
    assert(c>0.0);
@@ -65,8 +67,8 @@ int main(int argc,char **args)
    ierr = VecAssemblyEnd(f);CHKERRQ(ierr);
   
    ierr = VecScale(f,(PetscScalar)delta_t/(rho*c));CHKERRQ(ierr);
-   ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
-   ierr = VecView(f,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+   //ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+   //ierr = VecView(f,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
    /* create matrix object */
    ierr = MatCreate(PETSC_COMM_WORLD,&A);CHKERRQ(ierr);
@@ -99,9 +101,10 @@ int main(int argc,char **args)
    /* Assemble matrix */
    ierr = MatAssemblyBegin(A,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
    ierr = MatAssemblyEnd(A,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
-   ierr = MatView(A,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+   //ierr = MatView(A,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
    /* Slove the heat equation */
+    t1 = MPI_Wtime();
     while (its < n){
       ierr = MatMultAdd(A,u,f,u_new);CHKERRQ(ierr);
       i = 0;
@@ -112,8 +115,10 @@ int main(int argc,char **args)
       ierr = VecAssemblyEnd(u_new);CHKERRQ(ierr);
       ierr = VecCopy(u_new,u);CHKERRQ(ierr);
       its++;
-   }
-   ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+    }
+    t2 = MPI_Wtime();
+    ierr = PetscPrintf(PETSC_COMM_WORLD,"Time is %f s \n",t2-t1);CHKERRQ(ierr);
+  // ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
    ierr = VecDestroy(&u);CHKERRQ(ierr); ierr = VecDestroy(&u_new);CHKERRQ(ierr); 
    ierr = VecDestroy(&f);CHKERRQ(ierr); ierr = MatDestroy(&A);CHKERRQ(ierr);

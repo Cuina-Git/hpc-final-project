@@ -9,4 +9,6 @@ module purge
 module load intel/2018.4
 module load mpi/intel/2018.4
 
-mpirun -np 10 ./main.out -n 100000 -log_view > result.log 2>&1
+mpirun -np 10 ../main.out -n 10000 -log_view > result_1.log 2>&1
+
+mpirun -np 10 ../main.out -n 100000 -log_view > result_2.log 2>&1
