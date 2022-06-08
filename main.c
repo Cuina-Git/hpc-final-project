@@ -11,11 +11,12 @@ static char help[] = "Solves r the transient heat equation in a one-dimensional 
 int main(int argc,char **args)
 {
 
-   Vec            u, u_new, f;      /* approx solution, RHS, exact solution */
+   Vec            u, u_new, f, heat;      /* approx solution, RHS, exact solution */
    Mat            A;                /* linear system matrix */
    PC             pc;               /* preconditioner context */
    PetscErrorCode ierr;
-   PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,its;
+   PetscViewer	   viewer;
+   PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,,restart=0,its;
    PetscScalar    zero = 0.0,t = 1.0,rho = 1.0,c = 1.0,k = 1.0,l = 1.0,value[3],ui,fi;
    PetscReal      time,delta_x = 0.01,delta_t = t/n,r=k*delta_t/(rho*c*delta_x*delta_x);
 
@@ -133,12 +134,11 @@ int main(int argc,char **args)
       its++;
 
       /* Write HDF5 every 10 iterations for checkpoints restart */
-      i = 2; value[0] = 10.0*dt;
       if (its % 20 == 0)
       {
          ierr = VecView(u,viewer);CHKERRQ(ierr);
          ierr = PetscViewerHDF5PushGroup(viewer, "/heat");CHKERRQ(ierr);
-         ierr = VecSetValues(heat,1,&i,value,ADD_VALUES);CHKERRQ(ierr);
+         ierr = VecSetValues(heat,1,2,20.0*delta_t,ADD_VALUES);CHKERRQ(ierr);
 
          ierr = VecAssemblyBegin(heat);CHKERRQ(ierr);
          ierr = VecAssemblyEnd(heat);CHKERRQ(ierr);
