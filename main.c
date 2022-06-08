@@ -4,12 +4,13 @@ static char help[] = "Solves r the transient heat equation in a one-dimensional 
   Include "petscksp.h" so that we can use KSP solvers. 
 */
 #include <petscksp.h>
+#include <assert.h>
+
 int main(int argc,char **args)
 {
 
    Vec            u, u_new, f;      /* approx solution, RHS, exact solution */
    Mat            A;                /* linear system matrix */
-   KSP            ksp;              /* linear solver context */
    PC             pc;               /* preconditioner context */
    PetscErrorCode ierr;
    PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,its;

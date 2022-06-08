@@ -4,6 +4,8 @@ static char help[] = "Solves r the transient heat equation in a one-dimensional 
   Include "petscksp.h" so that we can use KSP solvers. 
 */
 #include <petscksp.h>
+#include <assert.h>
+
 int main(int argc,char **args)
 {
 
