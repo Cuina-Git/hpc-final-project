@@ -36,6 +36,7 @@ int main(int argc,char **args)
    ierr = VecSetSizes(u,PETSC_DECIDE,m);CHKERRQ(ierr);
    ierr = VecSetFromOptions(u);CHKERRQ(ierr);
    ierr = VecDuplicate(u,&u_new);CHKERRQ(ierr);
+   ierr = VecDuplicate(u,&u_exact);CHKERRQ(ierr);
    ierr = VecDuplicate(u,&f);CHKERRQ(ierr);
 
    /* Identify the starting and ending mesh points on each
@@ -69,10 +70,12 @@ int main(int argc,char **args)
    ierr = VecAssemblyEnd(u);CHKERRQ(ierr);
    ierr = VecAssemblyBegin(f);CHKERRQ(ierr);
    ierr = VecAssemblyEnd(f);CHKERRQ(ierr);
-  
+   ierr = VecAssemblyBegin(u_exact);CHKERRQ(ierr);
+   ierr = VecAssemblyEnd(u_exact);CHKERRQ(ierr);  
+
    ierr = VecScale(f,(PetscScalar)delta_t/(rho*c));CHKERRQ(ierr);
-   //ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
-   //ierr = VecView(f,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+   ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+   ierr = VecView(f,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
    /* create matrix object */
    ierr = MatCreate(PETSC_COMM_WORLD,&A);CHKERRQ(ierr);
@@ -105,7 +108,7 @@ int main(int argc,char **args)
    /* Assemble matrix */
    ierr = MatAssemblyBegin(A,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
    ierr = MatAssemblyEnd(A,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
-   //ierr = MatView(A,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+   ierr = MatView(A,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
    /* Slove the heat equation */
     t1 = MPI_Wtime();
@@ -119,11 +122,28 @@ int main(int argc,char **args)
       ierr = VecAssemblyEnd(u_new);CHKERRQ(ierr);
       ierr = VecCopy(u_new,u);CHKERRQ(ierr);
       its++;
+      if (its % 10000 == 0)
+      {
+        for (i = 0; i < m; i++)
+        {
+          if (i == 0 || i == m-1) {
+             ierr = VecSetValues(u_exact,1,&i,&zero,INSERT_VALUES);CHKERRQ(ierr);
+          } else {
+             ui   = exp(-1.0*its*delta_t)*sin(i*delta_x);
+             ierr = VecSetValues(u_exact,1,&i,&ui,INSERT_VALUES);CHKERRQ(ierr);
+          }
+        }
+        //ierr = VecView(u_new,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+        ierr = VecAXPY(u_new,-1,u_exact);CHKERRQ(ierr);
+        ierr = VecView(u_new,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
+        ierr = VecNorm(u_new,NORM_2,&norm);CHKERRQ(ierr);
+        ierr = PetscPrintf(PETSC_COMM_WORLD,"Norm of error %g ,The iteration is %i \n",PetscAbsReal(norm),its);CHKERRQ(ierr);
+      }
     }
     t2 = MPI_Wtime();
     ierr = PetscPrintf(PETSC_COMM_WORLD,"Time is %f s \n",t2-t1);CHKERRQ(ierr);
     ierr = VecAXPY(u,-1,u_exact);CHKERRQ(ierr);
-    ierr = VecNorm(y,NORM_2,&norm);CHKERRQ(ierr);
+    ierr = VecNorm(u,NORM_2,&norm);CHKERRQ(ierr);
     ierr = PetscPrintf(PETSC_COMM_WORLD,"Norm of error %g \n",PetscAbsReal(norm));CHKERRQ(ierr);
    //ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
