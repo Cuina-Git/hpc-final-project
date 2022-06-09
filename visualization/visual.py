@@ -9,6 +9,10 @@ with open("data.log", "r") as file:
         temp = temp.strip('\n') 
         if temp.startswith('Process'):
             continue
+        if temp.startswith('Vec'):
+            continue
+        if temp.startswith('  type'):
+            continue
         else:
             data.append(float(temp))
 

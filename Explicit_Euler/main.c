@@ -10,7 +10,7 @@ static char help[] = "Solves r the transient heat equation in a one-dimensional 
 int main(int argc,char **args)
 {
 
-   Vec            u, u_new, f;      /* approx solution, RHS, exact solution */
+   Vec            u, u_new,u_steady f;      /* approx solution, RHS, exact solution */
    Mat            A;                /* linear system matrix */
    PetscErrorCode ierr;
    PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,its;
@@ -20,7 +20,7 @@ int main(int argc,char **args)
    ierr = PetscInitialize(&argc,&args,(char*)0,help);if (ierr) return ierr;
    ierr = PetscOptionsGetInt(NULL,NULL,"-m",&m,NULL);CHKERRQ(ierr);
    ierr = PetscOptionsGetInt(NULL,NULL,"-n",&n,NULL);CHKERRQ(ierr);
-   PetscReal      t1,t2,delta_x = 1.0/(m-1),delta_t = t/n,r=k*delta_t/(rho*c*delta_x*delta_x);
+   PetscReal      norm,t1,t2,delta_x = 1.0/(m-1),delta_t = t/n,r=k*delta_t/(rho*c*delta_x*delta_x);
    ierr = PetscPrintf(PETSC_COMM_WORLD,"delta_t %f \n",delta_t);CHKERRQ(ierr);
    
    /* Assert parameters are positive */
@@ -37,6 +37,7 @@ int main(int argc,char **args)
    ierr = VecSetFromOptions(u);CHKERRQ(ierr);
    ierr = VecDuplicate(u,&u_new);CHKERRQ(ierr);
    ierr = VecDuplicate(u,&f);CHKERRQ(ierr);
+   ierr = VecDuplicate(u,&u_steady);CHKERRQ(ierr);
 
    /* Identify the starting and ending mesh points on each
       processor for the interior part of the mesh. We let PETSc decide
@@ -46,13 +47,17 @@ int main(int argc,char **args)
 
    /* Set vector u & f */
    ierr = VecSet(u,zero);CHKERRQ(ierr);
+   ierr = VecSet(u_steady,zero);CHKERRQ(ierr);
    ierr = VecSet(f,zero);CHKERRQ(ierr);
    if (rank == 0){
       for (i = 0; i < m; i++) {
          if (i == 0 || i == m-1) {
             ierr = VecSetValues(u,1,&i,&zero,INSERT_VALUES);CHKERRQ(ierr);
+            ierr = VecSetValues(u_steady,1,&i,&zero,INSERT_VALUES);CHKERRQ(ierr);
          } else {
             ui   = exp(i*delta_x);
+            ierr = VecSetValues(u,1,&i,&ui,INSERT_VALUES);CHKERRQ(ierr);
+            ui   = sin(l*PETSC_PI*i*delta_x)/(l*l*PETSC_PI*PETSC_PI);
             ierr = VecSetValues(u,1,&i,&ui,INSERT_VALUES);CHKERRQ(ierr);
          }
             fi   = sin(l*PETSC_PI*i*delta_x);
@@ -118,10 +123,15 @@ int main(int argc,char **args)
     }
     t2 = MPI_Wtime();
     ierr = PetscPrintf(PETSC_COMM_WORLD,"Time is %f s \n",t2-t1);CHKERRQ(ierr);
+    ierr = VecAXPY(u_steady,-1,u);CHKERRQ(ierr);
+    ierr = VecNorm(u_steady,NORM_2,&norm);CHKERRQ(ierr);
+    ierr = PetscPrintf(PETSC_COMM_WORLD,"Error is %f s \n",norm/n);CHKERRQ(ierr);
+
   // ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
    ierr = VecDestroy(&u);CHKERRQ(ierr); ierr = VecDestroy(&u_new);CHKERRQ(ierr); 
    ierr = VecDestroy(&f);CHKERRQ(ierr); ierr = MatDestroy(&A);CHKERRQ(ierr);
+   ierr = VecDestroy(&u_steady);CHKERRQ(ierr); 
 
    ierr = PetscFinalize();
    return ierr;
