@@ -10,7 +10,7 @@ static char help[] = "Solves r the transient heat equation in a one-dimensional 
 int main(int argc,char **args)
 {
 
-   Vec            u, u_new,u_steady f;      /* approx solution, RHS, exact solution */
+   Vec            u, u_new,u_steady, f;      /* approx solution, RHS, exact solution */
    Mat            A;                /* linear system matrix */
    PetscErrorCode ierr;
    PetscInt       i,m = 101,n = 100000,col[3],rstart,rend,nlocal,rank,its;
@@ -70,7 +70,9 @@ int main(int argc,char **args)
    ierr = VecAssemblyEnd(u);CHKERRQ(ierr);
    ierr = VecAssemblyBegin(f);CHKERRQ(ierr);
    ierr = VecAssemblyEnd(f);CHKERRQ(ierr);
-  
+   ierr = VecAssemblyBegin(u_steady);CHKERRQ(ierr);
+   ierr = VecAssemblyEnd(u_steady);CHKERRQ(ierr);  
+
    ierr = VecScale(f,(PetscScalar)delta_t/(rho*c));CHKERRQ(ierr);
    //ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
    //ierr = VecView(f,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
@@ -125,7 +127,7 @@ int main(int argc,char **args)
     ierr = PetscPrintf(PETSC_COMM_WORLD,"Time is %f s \n",t2-t1);CHKERRQ(ierr);
     ierr = VecAXPY(u_steady,-1,u);CHKERRQ(ierr);
     ierr = VecNorm(u_steady,NORM_2,&norm);CHKERRQ(ierr);
-    ierr = PetscPrintf(PETSC_COMM_WORLD,"Error is %f s \n",norm/n);CHKERRQ(ierr);
+    ierr = PetscPrintf(PETSC_COMM_WORLD,"Error is %f \n",norm/n);CHKERRQ(ierr);
 
   // ierr = VecView(u,PETSC_VIEWER_STDOUT_WORLD);CHKERRQ(ierr);
 
