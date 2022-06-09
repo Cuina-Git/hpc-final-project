@@ -1,22 +1,21 @@
 delta_t 0.000010 
-Time is 8.200792 s 
-Error is 0.000007 s 
+Time is 64.003097 s 
 ************************************************************************************************************************
 ***             WIDEN YOUR WINDOW TO 120 CHARACTERS.  Use 'enscript -r -fCourier9' to print this document            ***
 ************************************************************************************************************************
 
 ---------------------------------------------- PETSc Performance Summary: ----------------------------------------------
 
-./main.out on a  named r01n20 with 10 processors, by mae-cuin Thu Jun  9 20:51:29 2022
+../main.out on a  named r01n08 with 16 processors, by mae-cuin Thu Jun  9 19:21:42 2022
 Using Petsc Release Version 3.16.6, Mar 30, 2022 
 
                          Max       Max/Min     Avg       Total
-Time (sec):           8.360e+00     1.002   8.350e+00
-Objects:              1.300e+01     1.000   1.300e+01
-Flop:                 6.400e+06     1.103   6.020e+06  6.020e+07
-Flop/sec:             7.671e+05     1.106   7.210e+05  7.210e+06
-MPI Messages:         1.600e+06     3.200   7.201e+05  7.201e+06
-MPI Message Lengths:  1.280e+07     3.199   8.003e+00  5.762e+07
+Time (sec):           6.511e+01     1.000   6.509e+01
+Objects:              1.200e+01     1.000   1.200e+01
+Flop:                 4.200e+06     1.235   3.763e+06  6.020e+07
+Flop/sec:             6.453e+04     1.236   5.780e+04  9.248e+05
+MPI Messages:         2.500e+06     4.999   7.501e+05  1.200e+07
+MPI Message Lengths:  2.000e+07     4.997   8.003e+00  9.604e+07
 MPI Reductions:       1.000e+05     1.000
 
 Flop counting convention: 1 flop = 1 real number operation of type (multiply/divide/add/subtract)
@@ -25,7 +24,7 @@ Flop counting convention: 1 flop = 1 real number operation of type (multiply/div
 
 Summary of Stages:   ----- Time ------  ----- Flop ------  --- Messages ---  -- Message Lengths --  -- Reductions --
                         Avg     %Total     Avg     %Total    Count   %Total     Avg         %Total    Count   %Total
- 0:      Main Stage: 8.3490e+00 100.0%  6.0201e+07 100.0%  7.201e+06 100.0%  8.003e+00      100.0%  1.000e+05 100.0%
+ 0:      Main Stage: 6.5090e+01 100.0%  6.0200e+07 100.0%  1.200e+07 100.0%  8.003e+00      100.0%  1.000e+05 100.0%
 
 ------------------------------------------------------------------------------------------------------------------------
 See the 'Profiling' chapter of the users' manual for details on interpreting output.
@@ -49,24 +48,22 @@ Event                Count      Time (sec)     Flop                             
 
 --- Event Stage 0: Main Stage
 
-BuildTwoSided     100005 1.0 7.0498e+00 2.8 0.00e+00 0.0 1.8e+06 1.2e+01 1.0e+05 67  0 25 37100  67  0 25 37100     0
-BuildTwoSidedF    100004 1.0 7.2110e+00 2.7 0.00e+00 0.0 5.4e+06 8.0e+00 1.0e+05 70  0 75 75100  70  0 75 75100     0
-VecNorm                1 1.0 1.1140e-02 2.3 2.20e+01 1.1 0.0e+00 0.0e+00 1.0e+00  0  0  0  0  0   0  0  0  0  0     0
-VecScale               1 1.0 6.8879e-03 2.6 1.10e+01 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
-VecCopy           100000 1.0 3.3164e-02 3.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
-VecSet                 4 1.0 5.8889e-05 6.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
-VecAXPY                1 1.0 6.2780e-03110.2 2.20e+01 1.1 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
-VecAssemblyBegin  100003 1.0 7.3911e+00 2.6 0.00e+00 0.0 5.4e+06 8.0e+00 1.0e+05 72  0 75 75100  72  0 75 75100     0
-VecAssemblyEnd    100003 1.0 1.4144e+0018.4 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  4  0  0  0  0   4  0  0  0  0     0
-VecScatterBegin   100000 1.0 2.3310e-01 2.0 0.00e+00 0.0 1.8e+06 8.0e+00 1.0e+00  2  0 25 25  0   2  0 25 25  0     0
-VecScatterEnd     100000 1.0 5.0675e+00128.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00 18  0  0  0  0  18  0  0  0  0     0
-MatMultAdd        100000 1.0 5.2565e+0027.0 6.40e+06 1.1 1.8e+06 8.0e+00 1.0e+00 21100 25 25  0  21100 25 25  0    11
-MatAssemblyBegin       1 1.0 3.6440e-0243.6 0.00e+00 0.0 0.0e+00 0.0e+00 1.0e+00  0  0  0  0  0   0  0  0  0  0     0
-MatAssemblyEnd         1 1.0 3.4028e-02 1.0 0.00e+00 0.0 0.0e+00 0.0e+00 5.0e+00  0  0  0  0  0   0  0  0  0  0     0
-SFSetGraph             1 1.0 9.5367e-07 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
-SFSetUp                1 1.0 6.9270e-03 2.2 0.00e+00 0.0 3.6e+01 4.0e+00 1.0e+00  0  0  0  0  0   0  0  0  0  0     0
-SFPack            100000 1.0 2.9502e-02 2.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
-SFUnpack          100000 1.0 1.1575e-02 1.8 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+BuildTwoSided     100004 1.0 6.4053e+01 3.1 0.00e+00 0.0 3.0e+06 1.2e+01 1.0e+05 77  0 25 37100  77  0 25 37100     0
+BuildTwoSidedF    100003 1.0 6.4172e+01 3.1 0.00e+00 0.0 9.0e+06 8.0e+00 1.0e+05 77  0 75 75100  77  0 75 75100     0
+VecScale               1 1.0 3.9731e-0217.5 7.00e+00 1.2 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecCopy           100000 1.0 3.3517e-02 3.7 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecSet                 3 1.0 7.8201e-0511.3 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+VecAssemblyBegin  100002 1.0 6.3634e+01 3.1 0.00e+00 0.0 9.0e+06 8.0e+00 1.0e+05 77  0 75 75100  77  0 75 75100     0
+VecAssemblyEnd    100002 1.0 3.7686e+0052.5 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  1  0  0  0  0   1  0  0  0  0     0
+VecScatterBegin   100000 1.0 2.5061e-01 1.8 0.00e+00 0.0 3.0e+06 8.0e+00 1.0e+00  0  0 25 25  0   0  0 25 25  0     0
+VecScatterEnd     100000 1.0 4.2915e+01609.9 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00 20  0  0  0  0  20  0  0  0  0     0
+MatMultAdd        100000 1.0 4.3254e+01145.2 4.20e+06 1.2 3.0e+06 8.0e+00 1.0e+00 21100 25 25  0  21100 25 25  0     1
+MatAssemblyBegin       1 1.0 6.7413e-0113997.6 0.00e+00 0.0 0.0e+00 0.0e+00 1.0e+00  1  0  0  0  0   1  0  0  0  0     0
+MatAssemblyEnd         1 1.0 5.6650e-02 1.1 0.00e+00 0.0 0.0e+00 0.0e+00 5.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFSetGraph             1 1.0 1.1921e-06 0.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFSetUp                1 1.0 1.5979e-02 1.8 0.00e+00 0.0 6.0e+01 4.0e+00 1.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFPack            100000 1.0 3.3836e-02 2.2 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
+SFUnpack          100000 1.0 2.0349e-02 3.0 0.00e+00 0.0 0.0e+00 0.0e+00 0.0e+00  0  0  0  0  0   0  0  0  0  0     0
 ------------------------------------------------------------------------------------------------------------------------
 
 Memory usage is given in bytes:
@@ -76,15 +73,15 @@ Reports information only for process 0.
 
 --- Event Stage 0: Main Stage
 
-              Vector     6              6        10744     0.
-              Matrix     3              3        11404     0.
+              Vector     5              5         8808     0.
+              Matrix     3              3        10764     0.
            Index Set     2              2         1788     0.
    Star Forest Graph     1              1         1200     0.
               Viewer     1              0            0     0.
 ========================================================================================================================
 Average time to get PetscTime(): 0.
-Average time for MPI_Barrier(): 3.38554e-06
-Average time for zero size MPI_Send(): 0.00118001
+Average time for MPI_Barrier(): 1.03951e-05
+Average time for zero size MPI_Send(): 0.00106831
 #PETSc Option Table entries:
 -log_view
 -n 100000

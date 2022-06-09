@@ -8,5 +8,9 @@
 module purge
 module load intel/2018.4
 module load mpi/intel/2018.4
+module load valgrind/3.14.0
 
 mpirun -np 10 ./main.out -n 100000 -log_view > result.log 2>&1
+
+#valgrind --tool=callgrind ./main.out -n 100000 -log_view > result.log 2>&1
+

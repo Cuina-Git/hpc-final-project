@@ -1,0 +1,586 @@
+Sender: LSF System <lsfadmin@r01n20>
+Subject: Job 3827700: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 06:05:33 2022.
+Job was executed on host(s) <4*r01n20>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 06:05:34 2022.
+                            <4*r01n15>
+                            <4*r01n19>
+                            <6*r01n17>
+                            <7*r01n03>
+                            <7*r01n10>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 06:05:34 2022.
+Terminated at Thu Jun  9 06:07:27 2022.
+Results reported at Thu Jun  9 06:07:27 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 32
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+mpirun -np 16 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+mpirun -np 32 ../main.out -n 100000 -log_view > result5.log 2>&1
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   2403.00 sec.
+    Max Memory :                                 1056 MB
+    Average Memory :                             124.77 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   17 MB
+    Max Processes :                              40
+    Max Threads :                                70
+    Run time :                                   112 sec.
+    Turnaround time :                            114 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n20>
+Subject: Job 3827730: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 06:40:04 2022.
+Job was executed on host(s) <4*r01n20>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 06:40:04 2022.
+                            <4*r01n15>
+                            <5*r01n19>
+                            <6*r01n17>
+                            <8*r01n03>
+                            <5*r01n10>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 06:40:04 2022.
+Terminated at Thu Jun  9 06:41:58 2022.
+Results reported at Thu Jun  9 06:41:58 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 32
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+mpirun -np 16 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+mpirun -np 32 ../main.out -n 100000 -log_view > result5.log 2>&1
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   2566.00 sec.
+    Max Memory :                                 1053 MB
+    Average Memory :                             152.50 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   17 MB
+    Max Processes :                              14
+    Max Threads :                                22
+    Run time :                                   113 sec.
+    Turnaround time :                            114 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n20>
+Subject: Job 3827736: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 06:44:48 2022.
+Job was executed on host(s) <4*r01n20>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 06:44:49 2022.
+                            <4*r01n15>
+                            <5*r01n19>
+                            <3*r01n17>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 06:44:49 2022.
+Terminated at Thu Jun  9 06:45:29 2022.
+Results reported at Thu Jun  9 06:45:29 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 16
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+mpirun -np 16 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+#mpirun -np 32 ../main.out -n 100000 -log_view > result5.log 2>&1
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   357.00 sec.
+    Max Memory :                                 142 MB
+    Average Memory :                             92.40 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   17 MB
+    Max Processes :                              7
+    Max Threads :                                9
+    Run time :                                   39 sec.
+    Turnaround time :                            41 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n20>
+Subject: Job 3827737: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 06:47:05 2022.
+Job was executed on host(s) <4*r01n20>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 06:47:06 2022.
+                            <4*r01n15>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 06:47:06 2022.
+Terminated at Thu Jun  9 06:47:26 2022.
+Results reported at Thu Jun  9 06:47:26 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 8
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+#mpirun -np 16 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+#mpirun -np 32 ../main.out -n 100000 -log_view > result5.log 2>&1
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   79.54 sec.
+    Max Memory :                                 142 MB
+    Average Memory :                             18.00 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   17 MB
+    Max Processes :                              7
+    Max Threads :                                9
+    Run time :                                   19 sec.
+    Turnaround time :                            21 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n20>
+Subject: Job 3827747: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 07:24:24 2022.
+Job was executed on host(s) <4*r01n20>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 07:24:24 2022.
+                            <4*r01n15>
+                            <6*r01n17>
+                            <2*r01n10>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 07:24:24 2022.
+Terminated at Thu Jun  9 07:25:22 2022.
+Results reported at Thu Jun  9 07:25:22 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 16
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+mpirun -np 16 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   586.00 sec.
+    Max Memory :                                 142 MB
+    Average Memory :                             99.33 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   33 MB
+    Max Processes :                              7
+    Max Threads :                                9
+    Run time :                                   57 sec.
+    Turnaround time :                            58 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n08>
+Subject: Job 3829619: <petsc-test> in cluster <sustchpc> Exited
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:12:33 2022.
+Job was executed on host(s) <r01n08>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:12:33 2022.
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 19:12:33 2022.
+Terminated at Thu Jun  9 19:13:25 2022.
+Results reported at Thu Jun  9 19:13:25 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 1
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+
+mpirun -np 1 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+mpirun -np 16 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with signal termination: 9.
+
+Resource usage summary:
+
+    CPU time :                                   262.00 sec.
+    Max Memory :                                 143 MB
+    Average Memory :                             108.14 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                9
+    Run time :                                   51 sec.
+    Turnaround time :                            52 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n08>
+Subject: Job 3829620: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:13:30 2022.
+Job was executed on host(s) <3*r01n08>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:13:30 2022.
+                            <12*r01n14>
+                            <1*r01n07>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 19:13:30 2022.
+Terminated at Thu Jun  9 19:13:59 2022.
+Results reported at Thu Jun  9 19:13:59 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 16
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+
+mpirun -np 1 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+mpirun -np 16 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   214.00 sec.
+    Max Memory :                                 112 MB
+    Average Memory :                             90.00 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                9
+    Run time :                                   28 sec.
+    Turnaround time :                            29 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n08>
+Subject: Job 3829624: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:16:31 2022.
+Job was executed on host(s) <3*r01n08>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:16:33 2022.
+                            <12*r01n14>
+                            <1*r01n07>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 19:16:33 2022.
+Terminated at Thu Jun  9 19:17:03 2022.
+Results reported at Thu Jun  9 19:17:03 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 16
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+
+mpirun -np 1 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+mpirun -np 16 ../main.out -n 100000 -log_view > result5.log 2>&1
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   227.00 sec.
+    Max Memory :                                 112 MB
+    Average Memory :                             63.50 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                9
+    Run time :                                   29 sec.
+    Turnaround time :                            32 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n08>
+Subject: Job 3829631: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:20:20 2022.
+Job was executed on host(s) <3*r01n08>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:20:21 2022.
+                            <3*r01n20>
+                            <9*r01n17>
+                            <1*r01n14>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 19:20:21 2022.
+Terminated at Thu Jun  9 19:21:44 2022.
+Results reported at Thu Jun  9 19:21:44 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 16
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+
+mpirun -np 1 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 2 ../main.out -n 100000 -log_view > result2.log 2>&1
+
+mpirun -np 4 ../main.out -n 100000 -log_view > result3.log 2>&1
+
+mpirun -np 8 ../main.out -n 100000 -log_view > result4.log 2>&1
+
+mpirun -np 16 ../main.out -n 100000 -log_view > result5.log 2>&1
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   983.00 sec.
+    Max Memory :                                 543 MB
+    Average Memory :                             97.10 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              13
+    Max Threads :                                19
+    Run time :                                   82 sec.
+    Turnaround time :                            84 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@r01n20>
+Subject: Job 3829658: <petsc-test> in cluster <sustchpc> Done
+
+Job <petsc-test> was submitted from host <login03> by user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:31:48 2022.
+Job was executed on host(s) <1*r01n20>, in queue <ser>, as user <mae-cuin> in cluster <sustchpc> at Thu Jun  9 19:31:49 2022.
+                            <3*r01n17>
+                            <4*r01n07>
+</work/mae-cuin> was used as the home directory.
+</work/mae-cuin/hpc/final-project/hpc-final-project/Explicit_Euler/parallel> was used as the working directory.
+Started at Thu Jun  9 19:31:49 2022.
+Terminated at Thu Jun  9 19:32:41 2022.
+Results reported at Thu Jun  9 19:32:41 2022.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 8
+#BSUB -e log.out
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+
+mpirun -np 1 ../main.out -n 100000 -log_view > result1.log 2>&1
+
+mpirun -np 2 ../main.out -n 200000 -log_view > result2.log 2>&1
+
+mpirun -np 4 ../main.out -n 400000 -log_view > result3.log 2>&1
+
+mpirun -np 8 ../main.out -n 800000 -log_view > result4.log 2>&1
+
+#mpirun -np 16 ../main.out -n 100000 -log_view > result5.log 2>&1
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   314.00 sec.
+    Max Memory :                                 49 MB
+    Average Memory :                             40.83 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                9
+    Run time :                                   52 sec.
+    Turnaround time :                            53 sec.
+
+The output (if any) follows:
+

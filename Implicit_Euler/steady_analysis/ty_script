@@ -8,9 +8,13 @@
 module purge
 module load intel/2018.4
 module load mpi/intel/2018.4
-module load valgrind/3.14.0
 
-mpirun -np 10 ./main.out -n 10000 \
+mpirun -np 10 ../main.out -n 100 \
   -ksp_type gmres \
   -pc_type asm \
-  -log_view > result.log 2>&1
+  -log_view > result_1.log 2>&1
+
+mpirun -np 10 ../main.out -n 1000 \
+  -ksp_type gmres \
+  -pc_type asm \
+  -log_view > result_2.log 2>&1

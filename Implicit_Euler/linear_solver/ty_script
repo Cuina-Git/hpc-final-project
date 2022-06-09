@@ -1,0 +1,24 @@
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 10
+#BSUB -e log.err
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+mpirun -np 10 ../main.out -n 1000 \
+  -pc_type jacobi \
+  -log_view > result_1.log 2>&1
+
+mpirun -np 10 ../main.out -n 1000 \
+  -pc_type asm \
+  -pc_asm_type basic \
+  -log_view > result_2.log 2>&1
+
+mpirun -np 10 ../main.out -n 1000 \
+  -pc_type lu \
+  -pc_factor_mat_solver_type mumps \
+  -log_view > result_3.log 2>&1

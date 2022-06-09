@@ -1,0 +1,35 @@
+#!/bin/bash
+#BSUB -J petsc-test
+#BSUB -q ser
+#BSUB -n 16
+#BSUB -e log.err
+#BSUB -o log.out
+
+module purge
+module load intel/2018.4
+module load mpi/intel/2018.4
+
+mpirun -np 1 ../main.out -n 10000 \
+  -ksp_type gmres \
+  -pc_type asm \
+  -log_view > result_1.log 2>&1
+
+mpirun -np 2 ../main.out -n 20000 \
+  -ksp_type gmres \
+  -pc_type asm \
+  -log_view > result_2.log 2>&1
+
+mpirun -np 4 ../main.out -n 40000 \
+  -ksp_type gmres \
+  -pc_type asm \
+  -log_view > result_3.log 2>&1
+
+mpirun -np 8 ../main.out -n 80000 \
+  -ksp_type gmres \
+  -pc_type asm \
+  -log_view > result_4.log 2>&1
+
+#mpirun -np 16 ../main.out -n 10000 \
+ # -ksp_type gmres \
+  #-pc_type asm \
+ # -log_view > result_5.log 2>&1
