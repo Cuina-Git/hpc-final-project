@@ -14,3 +14,9 @@ mpirun -np 10 ./main.out -n 10000 \
   -ksp_type gmres \
   -pc_type asm \
   -log_view > result.log 2>&1
+
+
+#valgrind mpirun -np 10 ./main.out -n 10000 \
+ # -ksp_type gmres \
+ # -pc_type asm \
+ # -log_view > result.log 2>&1

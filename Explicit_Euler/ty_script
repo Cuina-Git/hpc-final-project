@@ -12,5 +12,5 @@ module load valgrind/3.14.0
 
 mpirun -np 10 ./main.out -n 100000 -log_view > result.log 2>&1
 
-#valgrind --tool=callgrind ./main.out -n 100000 -log_view > result.log 2>&1
+#valgrind mpirun -np=10 ./main.out -n 100000 -log_view > result1.log 2>&1
 
